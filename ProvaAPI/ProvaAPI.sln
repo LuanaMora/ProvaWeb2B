@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaAPI", "ProvaAPI\ProvaAPI.csproj", "{CA6D3F42-6094-4172-A222-E3B38E07FA36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA6D3F42-6094-4172-A222-E3B38E07FA36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6D3F42-6094-4172-A222-E3B38E07FA36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6D3F42-6094-4172-A222-E3B38E07FA36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6D3F42-6094-4172-A222-E3B38E07FA36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EE3FDFA-8EAB-4AAD-9B86-E70D630A1F7E}
+	EndGlobalSection
+EndGlobal
