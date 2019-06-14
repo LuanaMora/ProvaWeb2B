@@ -1,3 +1,102 @@
-<p>
-  vacina works!
-</p>
+<div class="row">
+  <div class="col s12 m12 l12">
+    <mat-form-field>
+      <input matInput placeholder="Código" type="text" [(ngModel)]="vacinaModel.idVacina">
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m6 l4">
+    <mat-form-field>
+      <input matInput placeholder="Data Vacina" type="Date" [(ngModel)]="vacinaModel.dtVacina">
+    </mat-form-field>
+  </div>
+  <div class="col s12 m6 l4">
+    <mat-form-field>
+      <input matInput placeholder="Peso" type="number" [(ngModel)]="vacinaModel.peso">
+    </mat-form-field>
+  </div>
+  <div class="col s12 m6 l4">
+    <mat-form-field>
+      <input matInput placeholder="Dosagem" type="number" [(ngModel)]="vacinaModel.dosagem">
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col s4 m4 l4">
+    <mat-form-field>
+      <input matInput placeholder="Aplicador" type="text" [(ngModel)]="vacinaModel.aplicador">
+    </mat-form-field>
+  </div>
+  <div class="col s4 m4 l4">
+    <mat-form-field>
+      <input matInput placeholder="Descrição Medicamento" type="text" [(ngModel)]="vacinaModel.descricaoMedicamento">
+    </mat-form-field>
+  </div>
+</div>
+<div class="row footer-btn">
+  <div class="button-row col s12">
+    <button mat-raised-button color="white" (click)="back()">Voltar</button>
+    <button mat-raised-button color="green" (click)="salvar()">Salvar</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m12 l12">
+    <mat-table #table [dataSource]="dataSource" matSort class="table-striped">
+        <ng-container matColumnDef="actionsColumn">
+            <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button mat-icon-button>
+                <mat-icon class="link_action" matTooltip="Delete"
+                  (click)="deleteConfirmation(element.idVacina)">delete</mat-icon>
+              </button>
+              <button mat-icon-button>
+                <mat-icon class="link_action" matTooltip="edit" (click)="update(element.idVacina)">edit
+                </mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+                <!-- Name Column -->
+      <ng-container matColumnDef="idVacina">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.idVacina}} </mat-cell>
+      </ng-container>
+  
+      <!-- Codigo -->
+      <ng-container matColumnDef="dtVacina">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Data Vacina </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dtVacina}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="peso">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Peso </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.peso}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dosagem">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Dosagem </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dosagem}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="aplicador">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Aplicador </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.aplicador}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="descricaoMedicamento">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Descricao do Medicamento </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.descricaomedicamento}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

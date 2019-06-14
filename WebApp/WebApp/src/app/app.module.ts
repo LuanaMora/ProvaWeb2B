@@ -10,12 +10,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { MatInputModule, MatRadioModule, MatButtonModule, 
   MatTableModule, MatIconModule, MatPaginatorModule, MatSortModule, MatExpansionModule,
-   MatSelectModule, MatDialogModule, MatProgressSpinnerModule } from '@angular/material';
+   MatSelectModule, MatDialogModule } from '@angular/material';
 
 import { DatePipe } from '@angular/common';
 import { VacinaComponent } from './vacina/vacina/vacina.component';
 import { VacinaListComponent } from './vacina/vacina-list/vacina-list/vacina-list.component';
-
 
 @NgModule({
   declarations: [
@@ -40,7 +39,7 @@ import { VacinaListComponent } from './vacina/vacina-list/vacina-list/vacina-lis
     MatExpansionModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
 
   ],
   providers: [HttpClient, DatePipe],
