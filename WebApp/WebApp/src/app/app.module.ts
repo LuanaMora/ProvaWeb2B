@@ -14,14 +14,14 @@ import { MatInputModule, MatRadioModule, MatButtonModule,
 
 import { DatePipe } from '@angular/common';
 import { VacinaComponent } from './vacina/vacina/vacina.component';
-import { VacinaListComponent } from './vacina/vacina-list/vacina-list/vacina-list.component';
 import { DialogComponent } from 'src/shared/dialog/dialog.component';
+import { AnimalComponent } from './animal/animal/animal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VacinaComponent,
-    VacinaListComponent
+    AnimalComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { VacinaService } from '../vacina.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { DialogComponent } from 'src/shared/dialog/dialog.component';
+import { AnimalService } from 'src/app/animal/animal.service';
+import { Animal } from '../model/animal';
 
 @Component({
   selector: 'app-vacina',
@@ -14,6 +16,7 @@ export class VacinaComponent implements OnInit {
 
   vacinaModel: Vacina;
   public vacinaList: Array<Vacina>;
+  public animalList: Array<Animal>;
   public edit: boolean;
 
   displayedColumns: string[] = ['actionsColumn', 'idVacina', 'dtVacina', 'peso', 'dosagem', 'aplicador', 'descricaomedicamento', 'animal'];
@@ -23,6 +26,7 @@ export class VacinaComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private vacinaService: VacinaService,
+    private animalService: AnimalService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog) { }
@@ -30,6 +34,7 @@ export class VacinaComponent implements OnInit {
   ngOnInit() {
     this.vacinaModel = new Vacina();
     this.listAll();
+    this.atualizarAnimalSelect();
   }
 
   listAll() {
@@ -49,8 +54,14 @@ export class VacinaComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  update(){
-    
+  
+  atualizarAnimalSelect() {
+    this.animalService.listAll().subscribe(sucesso => {
+        this.animalList = sucesso;
+    },
+    error => {
+      console.log(error);
+    });
   }
 
 
@@ -60,6 +71,7 @@ export class VacinaComponent implements OnInit {
     if (this.edit == true) {
       this.vacinaService.update(this.vacinaModel).subscribe(sucesso => {
         if (sucesso != null)
+         this.router.navigate(['../containerlist']);
           console.log(sucesso);
           this.listAll();
       },
@@ -89,5 +101,8 @@ export class VacinaComponent implements OnInit {
       });
   }
 
+  update(id: number){
+      this.router.navigate(['../vacina-edit/' + id]);
+    }
+  }
 
-}

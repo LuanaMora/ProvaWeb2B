@@ -4,11 +4,17 @@
       <input matInput placeholder="Código" type="text" [(ngModel)]="vacinaModel.idVacina">
     </mat-form-field>
   </div>
-  <div class="col s4 m4 l4">
+  
+  <div class="col s12 m4 l4">
     <mat-form-field>
-      <input matInput placeholder="Animal" type="number" [(ngModel)]="vacinaModel.idAnimal">
+      <mat-select placeholder="Animal" [(ngModel)]="vacinaModel.idAnimal" (SelectionChange)="atualizarAnimalSelect()">
+        <mat-option *ngFor="let animal of this.animalList" [value]="animal.idAnimal">
+          {{ animal.idAnimal + " - " + animal.descricao}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
+
 </div>
 <div class="row">
   <div class="col s12 m6 l4">
