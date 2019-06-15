@@ -14,7 +14,7 @@ namespace ProvaAPI.Models
         public string Descricaomedicamento { get; set; }
         public int IdAnimal { get; set; }
 
-        [JsonIgnore]
+
         public Animal IdAnimalNavigation { get; set; }
     }
 }

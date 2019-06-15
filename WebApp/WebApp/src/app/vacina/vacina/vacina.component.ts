@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vacina } from '../model/vacina';
 import { VacinaService } from '../vacina.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { DialogComponent } from 'src/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-vacina',
@@ -15,7 +16,7 @@ export class VacinaComponent implements OnInit {
   public vacinaList: Array<Vacina>;
   public edit: boolean;
 
-  displayedColumns: string[] = ['actionsColumn', 'idVacina', 'dtVacina', 'peso', 'dosagem', 'aplicador', 'descricaoMedicamento'];
+  displayedColumns: string[] = ['actionsColumn', 'idVacina', 'dtVacina', 'peso', 'dosagem', 'aplicador', 'descricaomedicamento', 'animal'];
   public dataSource: any;
 
   @ViewChild(MatPaginator) paginatorCustom: MatPaginator;
@@ -23,7 +24,8 @@ export class VacinaComponent implements OnInit {
 
   constructor(private vacinaService: VacinaService,
     private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.vacinaModel = new Vacina();
@@ -47,6 +49,10 @@ export class VacinaComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  update(){
+    
+  }
+
 
   salvar() {
     console.log("Salvar Vacina");
@@ -54,8 +60,8 @@ export class VacinaComponent implements OnInit {
     if (this.edit == true) {
       this.vacinaService.update(this.vacinaModel).subscribe(sucesso => {
         if (sucesso != null)
-          this.router.navigate(['../vacina-list']);
           console.log(sucesso);
+          this.listAll();
       },
         error => {
           console.log(error);
@@ -63,13 +69,25 @@ export class VacinaComponent implements OnInit {
     } else {
       this.vacinaService.save(this.vacinaModel).subscribe(sucesso => {
         if (sucesso != null)
-          console.log(sucesso);
-          this.router.navigate(['../vacina-list']);
+          console.log(sucesso); 
+          this.listAll();
       },
         error => {
           console.log(error);
         });
     }
   }
+
+  delete(id: number) {
+    this.vacinaService.delete(id).subscribe(sucesso => {
+      if (sucesso != null)
+        console.log(sucesso);
+      this.listAll(); //Não usa-se o atualizaTable() porque o mesmo irá tentar buscar um código que ja foi deletado do banco 
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
 
 }

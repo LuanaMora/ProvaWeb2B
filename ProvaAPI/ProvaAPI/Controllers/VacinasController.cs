@@ -106,7 +106,6 @@ namespace ProvaAPI.Controllers
                     throw;
                 }
             }
-
             return CreatedAtAction("GetVacina", new { id = vacina.IdVacina }, vacina);
         }
 

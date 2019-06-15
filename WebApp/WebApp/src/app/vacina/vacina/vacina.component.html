@@ -4,6 +4,11 @@
       <input matInput placeholder="Código" type="text" [(ngModel)]="vacinaModel.idVacina">
     </mat-form-field>
   </div>
+  <div class="col s4 m4 l4">
+    <mat-form-field>
+      <input matInput placeholder="Animal" type="number" [(ngModel)]="vacinaModel.idAnimal">
+    </mat-form-field>
+  </div>
 </div>
 <div class="row">
   <div class="col s12 m6 l4">
@@ -30,10 +35,12 @@
   </div>
   <div class="col s4 m4 l4">
     <mat-form-field>
-      <input matInput placeholder="Descrição Medicamento" type="text" [(ngModel)]="vacinaModel.descricaoMedicamento">
+      <input matInput placeholder="Descrição Medicamento" type="text" [(ngModel)]="vacinaModel.descricaomedicamento">
     </mat-form-field>
   </div>
+
 </div>
+
 <div class="row footer-btn">
   <div class="button-row col s12">
     <button mat-raised-button color="white" (click)="back()">Voltar</button>
@@ -44,26 +51,26 @@
 <div class="row">
   <div class="col s12 m12 l12">
     <mat-table #table [dataSource]="dataSource" matSort class="table-striped">
-        <ng-container matColumnDef="actionsColumn">
-            <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-              <button mat-icon-button>
-                <mat-icon class="link_action" matTooltip="Delete"
-                  (click)="deleteConfirmation(element.idVacina)">delete</mat-icon>
-              </button>
-              <button mat-icon-button>
-                <mat-icon class="link_action" matTooltip="edit" (click)="update(element.idVacina)">edit
-                </mat-icon>
-              </button>
-            </mat-cell>
-          </ng-container>
+      <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button>
+            <mat-icon class="link_action" matTooltip="Delete" (click)="delete(element.idVacina)">delete
+            </mat-icon>
+          </button>
+          <button mat-icon-button>
+            <mat-icon class="link_action" matTooltip="edit" (click)="update(element.idVacina)">edit
+            </mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-                <!-- Name Column -->
+      <!-- Name Column -->
       <ng-container matColumnDef="idVacina">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.idVacina}} </mat-cell>
       </ng-container>
-  
+
       <!-- Codigo -->
       <ng-container matColumnDef="dtVacina">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Data Vacina </mat-header-cell>
@@ -89,9 +96,15 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="descricaoMedicamento">
+      <ng-container matColumnDef="descricaomedicamento">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Descricao do Medicamento </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.descricaomedicamento}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="animal">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Animal </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.idAnimal}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ProvaAPI.Models
@@ -13,6 +14,7 @@ namespace ProvaAPI.Models
         public int IdAnimal { get; set; }
         public string Descricao { get; set; }
 
+        [JsonIgnore]
         public ICollection<Vacina> Vacina { get; set; }
     }
 }
