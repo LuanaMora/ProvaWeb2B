@@ -1,0 +1,26 @@
+
+CREATE TABLE animal (
+                id_animal INTEGER NOT NULL,
+                descricao VARCHAR,
+                CONSTRAINT animal_pk PRIMARY KEY (id_animal)
+);
+
+
+CREATE TABLE vacina (
+                id_vacina INTEGER NOT NULL,
+                dt_vacina DATE,
+                peso DOUBLE PRECISION,
+                dosagem DOUBLE PRECISION,
+                aplicador VARCHAR,
+                descricaoMedicamento VARCHAR,
+                id_animal INTEGER NOT NULL,
+                CONSTRAINT vacina_pk PRIMARY KEY (id_vacina)
+);
+
+
+ALTER TABLE vacina ADD CONSTRAINT animal_vacina_fk
+FOREIGN KEY (id_animal)
+REFERENCES animal (id_animal)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;

@@ -8,5 +8,5 @@ export class Vacina {
     dosagem: number;
     aplicador: String;
     descricaomedicamento: String;
-    idAnimal: number;
+    idAnimal: Animal;
 }
